@@ -1,7 +1,7 @@
 export type PositionType = 'LONG' | 'SHORT'
 export type OrderType = 'limit' | 'market'
 
-export type OrderStatus = 'filled' | 'open' | 'partial' | 'cancelled'
+export type OrderStatus = 'filled' | 'open' | 'partial' | 'cancelled' | 'closed'
 
 export type Position = {
   market: string
