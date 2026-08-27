@@ -7,6 +7,6 @@ const router: Router = express.Router()
 
 router.post('/signup', SingUp)
 router.post('/signin', SignIn)
-router.post('/onramp', Authenticate, Onramp)
+router.post('/onramp-usdc', Authenticate, Onramp)
 
 export default router
