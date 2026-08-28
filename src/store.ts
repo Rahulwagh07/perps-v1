@@ -11,8 +11,9 @@ export const incrementFillId = () => nextFillId++
 export const users: User[] = []
 
 export const orderbooks: Orderbooks = {
-  SOL: { bids: {}, asks: {}, lastTradedPrice: 90, indexPrice: 90.01 },
+  SOL: { bids: {}, asks: {}, lastTradedPrice: 131, indexPrice: 131 },
   ETH: { bids: {}, asks: {}, lastTradedPrice: 1900, indexPrice: 1899.9 },
+  USDC: { bids: {}, asks: {}, lastTradedPrice: 0, indexPrice: 0 },
 }
 
 export const fills: Fill[] = []
