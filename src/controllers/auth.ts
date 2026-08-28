@@ -2,8 +2,11 @@ import type { Request, Response } from 'express'
 import { incrementUserId, sessions, users } from '../store'
 import type { User } from '../types'
 import { GenerateToken } from '../utils/auth'
+import { OAuth2Client } from 'google-auth-library'
 
-export function SingUp(req: Request, res: Response) {
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
+export async function SingUp(req: Request, res: Response) {
   const { username, password } = req.body
 
   if (!username || !password) {
@@ -31,7 +34,7 @@ export function SingUp(req: Request, res: Response) {
   })
 }
 
-export function SignIn(req: Request, res: Response) {
+export async function SignIn(req: Request, res: Response) {
   const { username, password } = req.body
 
   const user = users.find(
@@ -47,4 +50,21 @@ export function SignIn(req: Request, res: Response) {
   sessions[token] = user.userId
 
   return res.status(200).json({ token })
+}
+
+export async function GoogleSignIn(req: Request, res: Response) {
+  const { token } = req.body;
+  const ticket = await client.verifyIdToken({ idToken: token, audience: process.env.GOOGLE_CLIENT_ID });
+  const payload = ticket.getPayload();
+  const { email } = payload;
+
+  let user = users.find(u => u.username === email);
+  if (!user) {
+    user = { userId: incrementUserId(), username: email, password: '', collateral: { available: 0, locked: 0 }, positions: [], orders: [] };
+    users.push(user);
+  }
+
+  const authToken = GenerateToken();
+  sessions[authToken] = user.userId;
+  return res.status(200).json({ token: authToken });
 }
