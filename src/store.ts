@@ -11,7 +11,7 @@ export const incrementFillId = () => nextFillId++
 export const users: User[] = []
 
 export const orderbooks: Orderbooks = {
-  SOL: { bids: {}, asks: {}, lastTradedPrice: 90, indexPrice: 90.01 },
+  SOL: { bids: {}, asks: {}, lastTradedPrice: 95, indexPrice: 90.01 },
   ETH: { bids: {}, asks: {}, lastTradedPrice: 1900, indexPrice: 1899.9 },
 }
 
