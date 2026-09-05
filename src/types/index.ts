@@ -43,7 +43,6 @@ export type OpenOrderEntry = {
   orderId: number
   createdAt: Date
 }
-
 export type PriceLevel = {
   availableQty: number
   openOrders: OpenOrderEntry[]
@@ -68,3 +67,16 @@ export type Fill = {
   short: number
   createdAt: Date
 }
+
+export type Liquidation = {
+  positionId: number;
+  market: string;
+  liquidatedQty: number;
+}
+
+export type FundingPayment = {
+  market: string;
+  amount: number;
+  userId: number;
+  createdAt: Date;
+};
