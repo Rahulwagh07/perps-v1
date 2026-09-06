@@ -18,3 +18,22 @@ export const orderbooks: Orderbooks = {
 export const fills: Fill[] = []
 
 export const sessions: Record<string, number> = {}
+
+export function resetStore() {
+  nextUserId = 1
+  nextOrderId = 1
+  nextFillId = 1
+  users.length = 0
+  fills.length = 0
+  for (const key of Object.keys(sessions)) {
+    delete sessions[key]
+  }
+  orderbooks.SOL = { bids: {}, asks: {}, lastTradedPrice: 90, indexPrice: 90.01 }
+  orderbooks.ETH = { bids: {}, asks: {}, lastTradedPrice: 1900, indexPrice: 1899.9 }
+  // Remove any dynamically added markets
+  for (const key of Object.keys(orderbooks)) {
+    if (key !== 'SOL' && key !== 'ETH') {
+      delete orderbooks[key]
+    }
+  }
+}
