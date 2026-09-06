@@ -4,10 +4,14 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run src/index.ts"
+    "dev": "bun run src/index.ts",
+    "test": "bun test",
+    "bench": "bun run src/benchmarks.ts",
+    "bench:http": "bun run src/benchmarks.http.ts"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "mitata": "^1.0.34"
   },
   "peerDependencies": {
     "typescript": "^5"
