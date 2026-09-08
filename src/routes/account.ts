@@ -11,11 +11,11 @@ import {
 
 const router = Router()
 
-router.get('/equity/available', Authenticate, GetEquity)
-router.get('/positions/open/:marketId', Authenticate, GetOpenPositions)
-router.get('/positions/closed/:marketId', Authenticate, GetClosedPositions)
-router.get('/orders/open/:marketId', Authenticate, GetOpenOrders)
-router.get('/orders/:marketId', Authenticate, GetAllOrders)
-router.get('/fills', GetFills)
+router.get('/v1/equity/available', Authenticate, GetEquity)
+router.get('/v1/positions/open/:marketId', Authenticate, GetOpenPositions)
+router.get('/v1/positions/closed/:marketId', Authenticate, GetClosedPositions)
+router.get('/v1/orders/open/:marketId', Authenticate, GetOpenOrders)
+router.get('/v1/orders/:marketId', Authenticate, GetAllOrders)
+router.get('/v1/fills', GetFills)
 
 export default router
