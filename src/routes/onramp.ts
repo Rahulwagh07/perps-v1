@@ -1,11 +1,10 @@
 import type { Router } from 'express'
 import express from 'express'
-import { CancelOrder, PlaceOrder } from '../controllers/order'
+import { Onramp } from '../controllers/onramp'
 import { Authenticate } from './middleware'
 
 const router: Router = express.Router()
 
-router.post('/v1/order', Authenticate, PlaceOrder)
-router.delete('/v1/order', Authenticate, CancelOrder)
+router.post('/v1/onramp', Authenticate, Onramp)
 
 export default router
