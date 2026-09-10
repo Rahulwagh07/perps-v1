@@ -13,7 +13,7 @@ export function Authenticate(req: Request, res: Response, next: NextFunction) {
   next()
 }
 
-export function Onramp(req: Request, res: Response) {
+export function OnrampUsd(req: Request, res: Response) {
   const userId = req.userId
   const { amount } = req.body
 
